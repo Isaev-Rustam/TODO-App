@@ -10,7 +10,7 @@ import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 
 export default tseslint.config(
-  { ignores: ['dist', 'node_modules', 'build', 'webpack.config.ts'] },
+  { ignores: ['node_modules', 'build'] },
   {
     extends: [
       js.configs.recommended,
@@ -48,10 +48,8 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
-      // Prettier правила
       'prettier/prettier': 'error',
 
-      // TypeScript правила
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
@@ -61,27 +59,25 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-non-null-assertion': 'warn',
 
-      // React правила
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
       'react/prop-types': 'off',
       'react/display-name': 'off',
 
-      // Общие правила (убрали правила форматирования, так как их обрабатывает Prettier)
       'no-console': 'warn',
       'no-debugger': 'error',
       'prefer-const': 'error',
       'no-var': 'error',
       eqeqeq: ['error', 'always'],
       curly: ['error', 'all'],
-      'no-multiple-empty-lines': 'off', // Prettier обрабатывает
-      'no-trailing-spaces': 'off', // Prettier обрабатывает
-      'comma-dangle': 'off', // Prettier обрабатывает
-      quotes: 'off', // Prettier обрабатывает
-      semi: 'off', // Prettier обрабатывает
-      indent: 'off', // Prettier обрабатывает
-      'object-curly-spacing': 'off', // Prettier обрабатывает
-      'array-bracket-spacing': 'off', // Prettier обрабатывает
+      'no-multiple-empty-lines': 'off',
+      'no-trailing-spaces': 'off',
+      'comma-dangle': 'off',
+      quotes: 'off',
+      semi: 'off',
+      indent: 'off',
+      'object-curly-spacing': 'off',
+      'array-bracket-spacing': 'off',
     },
   },
 );
