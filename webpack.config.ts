@@ -10,8 +10,6 @@ interface EnvVariables {
 }
 
 export default (env: EnvVariables) => {
-  const isDev = env.mode === 'development';
-
   const paths: BuildPaths = {
     output: path.resolve(__dirname, 'build'),
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -24,7 +22,7 @@ export default (env: EnvVariables) => {
   const config: webpack.Configuration = buildWebpack({
     port: env.port ?? 3000,
     mode: env.mode ?? 'development',
-    isDev,
+    isDev: env.mode === 'development',
     paths,
     analyzer: Boolean(env.analyzer),
   });
