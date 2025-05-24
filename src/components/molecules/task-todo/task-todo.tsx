@@ -7,12 +7,14 @@ import styles from './index.module.css';
 import { FC } from 'react';
 import clsx from 'clsx';
 import { Task } from '@/types/todos';
+import { FormatDateFn } from '@/utils/formatDate';
 
 interface TaskTodoProps {
   task: Omit<Task, 'isEditing'>;
+  formatDateFn: FormatDateFn;
 }
 
-const TaskTodo: FC<TaskTodoProps> = ({ task }) => {
+const TaskTodo: FC<TaskTodoProps> = ({ task, formatDateFn }) => {
   const { isCompleted, created, description, id } = task;
 
   return (
@@ -27,7 +29,9 @@ const TaskTodo: FC<TaskTodoProps> = ({ task }) => {
         >
           {description}
         </Span>
-        <Span className={styles['todoapp__created']}>{created}</Span>
+        <Span className={styles['todoapp__created']}>
+          {formatDateFn(created)}
+        </Span>
       </Label>
       <Button
         className={clsx(

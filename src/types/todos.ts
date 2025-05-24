@@ -1,6 +1,8 @@
+export type FormatDate = Date | number;
+
 export interface Task {
   description: string;
-  created: string;
+  created: FormatDate;
   isCompleted: boolean;
   isEditing: boolean;
   id: string;

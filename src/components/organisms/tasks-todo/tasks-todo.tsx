@@ -6,6 +6,7 @@ import styles from './index.module.css';
 import { FC } from 'react';
 import { TaskList, Task } from '@/types/todos';
 import clsx from 'clsx';
+import { formatDateFn } from '@/utils/formatDate';
 
 interface TasksTodoProps {
   tasks: TaskList;
@@ -21,7 +22,11 @@ const TasksTodo: FC<TasksTodoProps> = ({ tasks }) => {
           isEditing && styles['todoapp__list-item--editing'],
         )}
       >
-        {isEditing ? <EditTasksTodo /> : <TaskTodo task={task} />}
+        {isEditing ? (
+          <EditTasksTodo />
+        ) : (
+          <TaskTodo task={task} formatDateFn={formatDateFn} />
+        )}
       </ListItem>
     );
   };
