@@ -1,0 +1,12 @@
+.checkbox {
+  text-align: center;
+  width: 40px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+}
