@@ -36,8 +36,7 @@
 
 .todoapp__btn-icon {
   position: absolute;
-  top: 0;
-  bottom: -3px;
+  transform: translateY(-50%);
   width: 30px;
   height: 40px;
   font-size: 34px;
@@ -52,9 +51,11 @@
 }
 
 .todoapp__btn-icon-edit {
+  top: 50%;
   font-size: 19px;
   right: 45px;
 }
 .todoapp__btn-icon-destroy {
+  top: 43%;
   right: 10px;
 }
