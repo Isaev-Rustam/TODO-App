@@ -1,0 +1,17 @@
+.todoapp__filters {
+  display: flex;
+}
+.filters__button {
+  display: inline-block;
+  color: inherit;
+  margin: 3px;
+  padding: 3px 7px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+.filters__button:focus,
+.filters__button:hover,
+.filters__button:active {
+  border-color: rgba(175, 47, 47, 0.2);
+}

@@ -1,23 +1,22 @@
-import React from 'react';
-import classes from '@/App.module.css';
-import btn from '@/assets/image.svg';
-import bgBtn from '@/assets/image.jpeg';
-import { Data } from './Data';
+import './index.module.css';
+import { Component } from 'react';
+import styles from './index.module.css';
+import { Section } from './atoms/containers';
+import HeaderTodo from './molecules/header-todo';
+import TasksTodo from './organisms/tasks-todo';
+import FooterTodo from './organisms/footer-todo';
+import { defaultTaskList } from '@/constants/todos';
 
-export class App extends React.Component {
+export class TodoApp extends Component {
   render(): React.ReactElement {
     return (
-      <div className={classes.example}>
-        <button
-          style={{ background: `url(${bgBtn}) no-repeat center/cover` }}
-          className={classes.button}
-          // onClick={() => console.log(classes, classes)}
-        >
-          <img src={btn} width={50} height={50} alt='Foo eating a sandwich.' />
-          <span> Click me!</span>
-        </button>
-        <Data />
-      </div>
+      <Section className={styles.todoapp}>
+        <HeaderTodo />
+        <Section className={styles.todoapp__main}>
+          <TasksTodo tasks={defaultTaskList} />
+          <FooterTodo />
+        </Section>
+      </Section>
     );
   }
 }

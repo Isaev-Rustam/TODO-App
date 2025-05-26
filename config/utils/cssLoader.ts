@@ -1,12 +1,13 @@
+import { BuildOptions } from 'config/types/types';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { RuleSetRule } from 'webpack';
 
-export function buildCssLoader(isDev: boolean): RuleSetRule {
+export function buildCssLoader({ isDev }: BuildOptions): RuleSetRule {
   const cssLoaderWithModules = {
     loader: 'css-loader',
     options: {
       modules: {
-        localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
+        localIdentName: isDev ? '[local]' : '[hash:base64:8]',
       },
     },
   };
