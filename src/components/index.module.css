@@ -17,7 +17,7 @@ body {
   outline: 0;
 }
 
-.todoapp {
+.todos {
   background: #fff;
   margin: 130px 0 40px 0;
   position: relative;
@@ -25,7 +25,7 @@ body {
     0 2px 4px 0 rgba(0, 0, 0, 0.2),
     0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
-.todoapp__main {
+.todos__main {
   position: relative;
   z-index: 2;
   border-top: 1px solid #e6e6e6;

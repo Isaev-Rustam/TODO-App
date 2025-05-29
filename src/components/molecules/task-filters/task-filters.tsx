@@ -1,6 +1,6 @@
-import Button from '@/components/atoms/button';
-import List from '@/components/atoms/list';
-import ListItem from '@/components/atoms/list-item';
+import Button from '@atoms/button';
+import List from '@atoms/list';
+import ListItem from '@atoms/list-item';
 import { FilterOption } from '@/types/todos';
 import { FC } from 'react';
 import styles from './index.module.css';
@@ -25,9 +25,7 @@ const TaskFilters: FC<TaskFiltersProps> = ({ callback }) => {
     );
   };
   return (
-    <List className={styles['todoapp__filters']}>
-      {filters.map(mapCallback)}
-    </List>
+    <List className={styles['todos__filters']}>{filters.map(mapCallback)}</List>
   );
 };
 

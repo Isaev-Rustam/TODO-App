@@ -4,7 +4,12 @@ export interface BuildPaths {
   public: string;
   favicon: string;
   output: string;
-  src: string;
+  alias: {
+    '@': string;
+    '@atoms': string;
+    '@molecules': string;
+    '@organisms': string;
+  };
 }
 
 export interface BuildOptions {
