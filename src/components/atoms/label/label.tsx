@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 
 interface LabelProps {
-  id: string;
+  id?: string;
   children?: ReactNode;
   className?: string;
 }

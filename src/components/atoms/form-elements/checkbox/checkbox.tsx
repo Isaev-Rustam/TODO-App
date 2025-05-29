@@ -2,18 +2,31 @@ import clsx from 'clsx';
 import { FC } from 'react';
 import styles from './index.module.css';
 
+type HandleChange = (isCompleted: boolean, id: number) => void;
+
 interface CheckboxProps {
-  check: boolean;
+  isCompleted: boolean;
   className?: string;
-  id: string;
+  id: number;
+  handleChangeTask: HandleChange;
 }
 
-const Checkbox: FC<CheckboxProps> = ({ className, check, id }) => {
+const Checkbox: FC<CheckboxProps> = ({
+  handleChangeTask,
+  className,
+  isCompleted,
+  id,
+}) => {
+  const handleChange = () => {
+    handleChangeTask(!isCompleted, id);
+  };
+
   return (
     <input
-      id={id}
+      id={String(id)}
       type='checkbox'
-      checked={check}
+      checked={isCompleted}
+      onChange={handleChange}
       className={clsx(styles.checkbox, className)}
     />
   );

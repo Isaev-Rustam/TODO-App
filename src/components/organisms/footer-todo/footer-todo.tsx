@@ -1,26 +1,25 @@
-import Button from '@/components/atoms/button';
-import { Footer } from '@/components/atoms/containers';
-import Span from '@/components/atoms/span';
-import TaskFilters from '@/components/molecules/filteries-tasks';
+import Button from '@atoms/button';
+import { Footer } from '@atoms/containers';
+import Span from '@atoms/span';
+import TaskFilters from '@molecules/task-filters';
 import styles from './index.module.css';
-// import { FC } from 'react';
+import { PureComponent } from 'react';
 
-// interface FooterTodoProps {}
-// : FC<FooterTodoProps>
-
-const FooterTodo = () => {
-  return (
-    <Footer className={styles['todoapp__footer']}>
-      <Span className={styles['todoapp__footer-num-elem']}>1 items left</Span>
-      <TaskFilters callback={() => null} />
-      <Button
-        onClick={() => null}
-        className={styles['todoapp__footer-clear-btn']}
-      >
-        Clear completed
-      </Button>
-    </Footer>
-  );
-};
+class FooterTodo extends PureComponent {
+  render() {
+    return (
+      <Footer className={styles['todos__footer']}>
+        <Span className={styles['todos__footer-num-elem']}>1 items left</Span>
+        <TaskFilters callback={() => null} />
+        <Button
+          onClick={() => null}
+          className={styles['todos__footer-clear-btn']}
+        >
+          Clear completed
+        </Button>
+      </Footer>
+    );
+  }
+}
 
 export default FooterTodo;

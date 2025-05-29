@@ -16,7 +16,12 @@ export default (env: EnvVariables) => {
     html: path.resolve(__dirname, 'public', 'index.html'),
     favicon: path.resolve(__dirname, 'public', 'favicon.ico'),
     public: path.resolve(__dirname, 'public'),
-    src: path.resolve(__dirname, 'src'),
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@atoms': path.resolve(__dirname, 'src', 'components', 'atoms'),
+      '@molecules': path.resolve(__dirname, 'src', 'components', 'molecules'),
+      '@organisms': path.resolve(__dirname, 'src', 'components', 'organisms'),
+    },
   };
 
   const config: webpack.Configuration = buildWebpack({

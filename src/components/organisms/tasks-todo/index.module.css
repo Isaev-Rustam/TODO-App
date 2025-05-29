@@ -1,21 +1,21 @@
-.todoapp__list {
+.todos__list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.todoapp__list:last-child {
+.todos__list:last-child {
   border-bottom: none;
 }
 
-.todoapp__list-item {
+.todos__list-item {
   position: relative;
   font-size: 24px;
   border-bottom: 1px solid #ededed;
 }
-.todoapp__list-item--editing {
+.todos__list-item--editing {
   border-bottom: none;
   padding: 0;
 }
-.todoapp__list-item--editing:last-child {
+.todos__list-item--editing:last-child {
   margin-bottom: -1px;
 }

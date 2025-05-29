@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from 'react';
+import { FC } from 'react';
 
 interface InputProps {
   placeholder?: string;
@@ -7,15 +7,7 @@ interface InputProps {
 }
 
 const InputText: FC<InputProps> = props => {
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
-
-  return (
-    <input ref={inputRef} type='text' {...props} className={props.className} />
-  );
+  return <input type='text' {...props} />;
 };
 
 export default InputText;

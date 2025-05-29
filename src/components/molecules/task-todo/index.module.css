@@ -1,11 +1,11 @@
-.todoapp__label {
+.todos__label {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 85px 15px 60px;
 }
 
-.todoapp__description {
+.todos__description {
   word-break: break-all;
   display: block;
   line-height: 1.2;
@@ -14,48 +14,56 @@
   color: #4d4d4d;
 }
 
-.todoapp__description--completed {
+.todos__description--completed {
   color: #cdcdcd;
   text-decoration: line-through;
 }
 
-.todoapp__created {
+.todos__created {
   font-size: 13px;
   color: gray;
 }
 
-.checkbox + label {
-  background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E');
+.todos__checkbox {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+  cursor: pointer;
+}
+
+.checkbox + .todos__checkbox {
+  background-image: url('../../../assets/checkbox-disable.svg');
   background-repeat: no-repeat;
-  background-position: center left;
+  background-position: top left;
 }
 
-.checkbox:checked + label {
-  background-image: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E');
+.checkbox:checked + .todos__checkbox {
+  background-image: url('../../../assets/checkbox-active.svg');
 }
 
-.todoapp__btn-icon {
+.todos__btn-icon {
   position: absolute;
   transform: translateY(-50%);
   width: 30px;
   height: 40px;
   font-size: 34px;
   color: #cc9a9a;
-  margin: auto 0 11px;
   transition: color 0.2s ease-out;
   cursor: pointer;
 }
 
-.todoapp__btn-icon:hover {
+.todos__btn-icon:hover {
   color: #af5b5e;
 }
 
-.todoapp__btn-icon-edit {
+.todos__btn-icon-edit {
   top: 50%;
   font-size: 19px;
   right: 45px;
 }
-.todoapp__btn-icon-destroy {
+.todos__btn-icon-destroy {
   top: 43%;
   right: 10px;
 }

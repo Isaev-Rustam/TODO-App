@@ -1,3 +1,5 @@
+import { MouseEvent } from 'react';
+
 export type FormatDate = Date | number;
 
 export interface Task {
@@ -5,7 +7,7 @@ export interface Task {
   created: FormatDate;
   isCompleted: boolean;
   isEditing: boolean;
-  id: string;
+  id: number;
 }
 
 export type TaskList = Task[];
@@ -16,3 +18,9 @@ export interface FilterOption {
 }
 
 export type FilterOptions = FilterOption[];
+
+export type HandleChangeTask = (isCompleted: boolean, id: number) => void;
+
+export type HandleRemoveTask = (
+  id: number,
+) => (e: MouseEvent<HTMLButtonElement>) => void;
