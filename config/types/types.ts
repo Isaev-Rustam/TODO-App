@@ -6,6 +6,7 @@ export interface BuildPaths {
   output: string;
   alias: {
     '@': string;
+    '@public': string;
     '@atoms': string;
     '@molecules': string;
     '@organisms': string;

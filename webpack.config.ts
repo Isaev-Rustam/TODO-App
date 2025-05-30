@@ -18,6 +18,7 @@ export default (env: EnvVariables) => {
     public: path.resolve(__dirname, 'public'),
     alias: {
       '@': path.resolve(__dirname, 'src'),
+      '@public': path.resolve(__dirname, 'public'),
       '@atoms': path.resolve(__dirname, 'src', 'components', 'atoms'),
       '@molecules': path.resolve(__dirname, 'src', 'components', 'molecules'),
       '@organisms': path.resolve(__dirname, 'src', 'components', 'organisms'),

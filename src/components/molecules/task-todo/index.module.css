@@ -24,25 +24,6 @@
   color: gray;
 }
 
-.todos__checkbox {
-  position: absolute;
-  left: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 20px;
-  cursor: pointer;
-}
-
-.checkbox + .todos__checkbox {
-  background-image: url('../../../assets/checkbox-disable.svg');
-  background-repeat: no-repeat;
-  background-position: top left;
-}
-
-.checkbox:checked + .todos__checkbox {
-  background-image: url('../../../assets/checkbox-active.svg');
-}
-
 .todos__btn-icon {
   position: absolute;
   transform: translateY(-50%);

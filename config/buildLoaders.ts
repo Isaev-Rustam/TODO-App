@@ -5,9 +5,16 @@ import { buildCssLoader } from './utils/cssLoader';
 
 export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
   const { isDev } = options;
+
   const assetLoader = {
-    test: /\.(png|svg|jpg|jpeg|gif)$/i,
+    test: /\.(png|jpg|jpeg|gif)$/i,
     type: 'asset/resource',
+  };
+
+  const svgrLoader = {
+    test: /\.svg$/i,
+    issuer: /\.[jt]sx?$/,
+    use: [{ loader: '@svgr/webpack' }],
   };
 
   const cssLoader = buildCssLoader(options);
@@ -28,5 +35,5 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     ],
   };
 
-  return [assetLoader, cssLoader, tsLoader];
+  return [assetLoader, cssLoader, svgrLoader, tsLoader];
 }
