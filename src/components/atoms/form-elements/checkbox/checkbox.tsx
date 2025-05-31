@@ -3,22 +3,20 @@ import { FC, ReactNode } from 'react';
 import styles from './index.module.css';
 import Span from '@atoms/span';
 
-type HandleChange = (isCompleted: boolean, id: number) => void;
-
 interface CheckboxProps {
   isCompleted: boolean;
   inputClass?: string;
   spanClass?: string;
   children: ReactNode;
   id: number;
-  handleChangeTask: HandleChange;
+  handleToggleTask: (isCompleted: boolean, id: number) => void;
 }
 
 const Checkbox: FC<CheckboxProps> = props => {
-  const { handleChangeTask, inputClass, isCompleted, children, spanClass, id } =
+  const { handleToggleTask, inputClass, isCompleted, children, spanClass, id } =
     props;
-  const handleChange = () => {
-    handleChangeTask(!isCompleted, id);
+  const handleToggle = () => {
+    handleToggleTask(!isCompleted, id);
   };
 
   return (
@@ -27,7 +25,7 @@ const Checkbox: FC<CheckboxProps> = props => {
         id={String(id)}
         type='checkbox'
         checked={isCompleted}
-        onChange={handleChange}
+        onChange={handleToggle}
         className={clsx(styles.checkbox, inputClass)}
       />
       <Span className={spanClass}>{children}</Span>

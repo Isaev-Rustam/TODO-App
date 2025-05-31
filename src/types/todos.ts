@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { MouseEvent, FocusEvent } from 'react';
 
 export type FormatDate = Date | number;
 
@@ -12,15 +12,21 @@ export interface Task {
 
 export type TaskList = Task[];
 
+type FilterTodos = 'all' | 'active' | 'completed';
+
 export interface FilterOption {
-  filter: 'all' | 'active' | 'completed';
+  filter: FilterTodos;
   label: string;
 }
-
 export type FilterOptions = FilterOption[];
 
-export type HandleChangeTask = (isCompleted: boolean, id: number) => void;
-
-export type HandleRemoveTask = (
+export type HandleToggleTask = (isCompleted: boolean, id: number) => void;
+export type HandleChangeTask = (label: string) => void;
+export type HandleAddTask = (label: string) => void;
+export type HandleChangesTasks = (id: number) => (label: string) => void;
+export type HandleBlurTasks = (e: FocusEvent<HTMLInputElement>) => void;
+export type HandleEditingTask = (
   id: number,
 ) => (e: MouseEvent<HTMLButtonElement>) => void;
+export type HandleFinishEditingTask = (id: number) => () => void;
+export type HandleRemoveTask = (id: number) => () => void;
