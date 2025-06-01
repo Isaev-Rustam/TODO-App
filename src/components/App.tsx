@@ -6,6 +6,9 @@ import HeaderTodo from '@molecules/header-todo';
 import TasksTodo from '@organisms/tasks-todo';
 import FooterTodo from '@organisms/footer-todo';
 import { addTodoTask, defaultTaskList } from '@/constants/todos';
+import { formatDateFn } from '@/utils/formatDate';
+import { updateTaskList } from '@/utils/update-task-list';
+// import { filteredTask } from '@/utils/filtered-task';
 import {
   HandleToggleTask,
   HandleRemoveTask,
@@ -15,17 +18,23 @@ import {
   HandleChangesTasks,
   HandleEditingTask,
   HandleFinishEditingTask,
+  FiltersTask,
+  HandleChangeFilter,
 } from '@/types/todos';
-import { formatDateFn } from '@/utils/formatDate';
-import { updateTaskList } from '@/utils/update-task-list';
+import { filteredTask } from '@/utils/filtered-task';
 
 interface TodoAppState {
   taskList: TaskList;
   label: string;
+  filter: FiltersTask;
 }
 
 export class TodoApp extends Component<object, TodoAppState> {
-  state = { taskList: structuredClone(defaultTaskList), label: '' };
+  state: TodoAppState = {
+    taskList: structuredClone(defaultTaskList),
+    filter: 'all',
+    label: '',
+  };
 
   handleToggleTask: HandleToggleTask = (isCompleted, id) => {
     this.setState(({ taskList }) => ({
@@ -68,8 +77,14 @@ export class TodoApp extends Component<object, TodoAppState> {
     }));
   };
 
+  handleChangeFilter: HandleChangeFilter = filter => () => {
+    this.setState({ filter });
+  };
+
   render(): ReactElement {
-    const { taskList, label } = this.state;
+    const { taskList, filter, label } = this.state;
+    const filteredTasks = filteredTask(taskList, filter);
+
     return (
       <Section className={styles.todos}>
         <HeaderTodo
@@ -79,7 +94,7 @@ export class TodoApp extends Component<object, TodoAppState> {
         />
         <Section className={styles.todos__main}>
           <TasksTodo
-            taskList={taskList}
+            taskList={filteredTasks}
             formatDateFn={formatDateFn}
             handleToggleTask={this.handleToggleTask}
             handleRemoveTask={this.handleRemoveTask}
@@ -87,7 +102,10 @@ export class TodoApp extends Component<object, TodoAppState> {
             handleEditingTask={this.handleEditingTask}
             handleFinishEditingTask={this.handleFinishEditingTask}
           />
-          <FooterTodo />
+          <FooterTodo
+            activeFilter={filter}
+            handleChangeFilter={this.handleChangeFilter}
+          />
         </Section>
       </Section>
     );

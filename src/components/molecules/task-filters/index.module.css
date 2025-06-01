@@ -10,6 +10,9 @@
   border: 1px solid transparent;
   border-radius: 3px;
 }
+.filters__button--active {
+  border-color: rgba(175, 47, 47, 0.2);
+}
 .filters__button:focus,
 .filters__button:hover,
 .filters__button:active {
