@@ -5,27 +5,38 @@ import Span from '@atoms/span';
 import styles from './index.module.css';
 import { PureComponent } from 'react';
 import clsx from 'clsx';
-import { HandleChangeTask, HandleRemoveTask, Task } from '@/types/todos';
+import {
+  HandleToggleTask,
+  HandleRemoveTask,
+  Task,
+  HandleEditingTask,
+} from '@/types/todos';
 import { FormatDateFn } from '@/utils/formatDate';
 import CheckboxTodo from '@molecules/checkbox-todo';
 
 interface TaskTodoProps {
   task: Omit<Task, 'isEditing'>;
   formatDateFn: FormatDateFn;
-  handleChangeTask: HandleChangeTask;
+  handleToggleTask: HandleToggleTask;
   handleRemoveTask: HandleRemoveTask;
+  handleEditingTask: HandleEditingTask;
 }
 
 class TaskTodo extends PureComponent<TaskTodoProps> {
   render() {
-    const { task, formatDateFn, handleChangeTask, handleRemoveTask } =
-      this.props;
+    const {
+      task,
+      formatDateFn,
+      handleToggleTask,
+      handleRemoveTask,
+      handleEditingTask,
+    } = this.props;
     const { isCompleted, created, description, id } = task;
     return (
       <Div>
         <Label className={styles.todos__label}>
           <CheckboxTodo
-            handleChangeTask={handleChangeTask}
+            handleToggleTask={handleToggleTask}
             isCompleted={isCompleted}
             id={id}
           />
@@ -42,6 +53,7 @@ class TaskTodo extends PureComponent<TaskTodoProps> {
           </Span>
         </Label>
         <Button
+          onClick={handleEditingTask(id)}
           className={clsx(
             styles['todos__btn-icon'],
             styles['todos__btn-icon-edit'],

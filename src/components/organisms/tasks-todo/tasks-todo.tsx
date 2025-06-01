@@ -1,30 +1,44 @@
 import ListItem from '@atoms/list-item';
 import List from '@atoms/list';
-import EditTasksTodo from '@molecules/edit-task';
 import TaskTodo from '@molecules/task-todo';
 import styles from './index.module.css';
 import { PureComponent } from 'react';
 import {
   TaskList,
   Task,
-  HandleChangeTask,
   HandleRemoveTask,
+  HandleToggleTask,
+  HandleChangesTasks,
+  HandleEditingTask,
+  HandleFinishEditingTask,
 } from '@/types/todos';
 import clsx from 'clsx';
 import { FormatDateFn } from '@/utils/formatDate';
+import EditTasks from '@molecules/edit-task';
 
 interface TasksTodoProps {
   taskList: TaskList;
   formatDateFn: FormatDateFn;
-  handleChangeTask: HandleChangeTask;
+  handleToggleTask: HandleToggleTask;
+  handleChangesTasks: HandleChangesTasks;
   handleRemoveTask: HandleRemoveTask;
+  handleEditingTask: HandleEditingTask;
+  handleFinishEditingTask: HandleFinishEditingTask;
 }
 class TasksTodo extends PureComponent<TasksTodoProps> {
   render() {
-    const { formatDateFn, handleChangeTask, handleRemoveTask, taskList } =
-      this.props;
+    const {
+      taskList,
+      formatDateFn,
+      handleToggleTask,
+      handleRemoveTask,
+      handleChangesTasks,
+      handleEditingTask,
+      handleFinishEditingTask,
+    } = this.props;
+
     const callback = (task: Task) => {
-      const { isEditing, id } = task;
+      const { isEditing, id, description } = task;
       return (
         <ListItem
           key={id}
@@ -34,11 +48,17 @@ class TasksTodo extends PureComponent<TasksTodoProps> {
           )}
         >
           {isEditing ? (
-            <EditTasksTodo />
+            <EditTasks
+              handleChangesTasks={handleChangesTasks}
+              handleFinishEditingTask={handleFinishEditingTask}
+              label={description}
+              id={id}
+            />
           ) : (
             <TaskTodo
-              handleChangeTask={handleChangeTask}
+              handleToggleTask={handleToggleTask}
               handleRemoveTask={handleRemoveTask}
+              handleEditingTask={handleEditingTask}
               task={task}
               formatDateFn={formatDateFn}
             />

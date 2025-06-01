@@ -5,22 +5,60 @@ import { Section } from '@atoms/containers';
 import HeaderTodo from '@molecules/header-todo';
 import TasksTodo from '@organisms/tasks-todo';
 import FooterTodo from '@organisms/footer-todo';
-import { defaultTaskList } from '@/constants/todos';
-import { HandleChangeTask, HandleRemoveTask, TaskList } from '@/types/todos';
+import { addTodoTask, defaultTaskList } from '@/constants/todos';
+import {
+  HandleToggleTask,
+  HandleRemoveTask,
+  TaskList,
+  HandleChangeTask,
+  HandleAddTask,
+  HandleChangesTasks,
+  HandleEditingTask,
+  HandleFinishEditingTask,
+} from '@/types/todos';
 import { formatDateFn } from '@/utils/formatDate';
+import { updateTaskList } from '@/utils/update-task-list';
 
 interface TodoAppState {
   taskList: TaskList;
+  label: string;
 }
 
 export class TodoApp extends Component<object, TodoAppState> {
-  state = { taskList: structuredClone(defaultTaskList) };
+  state = { taskList: structuredClone(defaultTaskList), label: '' };
 
-  handleChangeTask: HandleChangeTask = (isCompleted, id) => {
+  handleToggleTask: HandleToggleTask = (isCompleted, id) => {
     this.setState(({ taskList }) => ({
-      taskList: taskList.map(task =>
-        task.id === id ? { ...task, isCompleted } : task,
-      ),
+      taskList: updateTaskList(taskList, { id, isCompleted }),
+    }));
+  };
+
+  handleChangeTask: HandleChangeTask = label => {
+    this.setState({ label });
+  };
+
+  handleAddTask: HandleAddTask = label => {
+    this.setState(({ taskList }) => ({
+      taskList: [addTodoTask({ description: label }), ...taskList],
+      label: '',
+    }));
+  };
+
+  handleChangesTasks: HandleChangesTasks = id => label => {
+    this.setState(({ taskList }) => ({
+      taskList: updateTaskList(taskList, { id, description: label }),
+    }));
+  };
+
+  handleEditingTask: HandleEditingTask = id => () => {
+    this.setState(({ taskList }) => ({
+      taskList: updateTaskList(taskList, { id, isEditing: true }),
+    }));
+  };
+
+  handleFinishEditingTask: HandleFinishEditingTask = id => () => {
+    this.setState(({ taskList }) => ({
+      taskList: updateTaskList(taskList, { id, isEditing: false }),
     }));
   };
 
@@ -31,16 +69,23 @@ export class TodoApp extends Component<object, TodoAppState> {
   };
 
   render(): ReactElement {
-    const { taskList } = this.state;
+    const { taskList, label } = this.state;
     return (
       <Section className={styles.todos}>
-        <HeaderTodo />
+        <HeaderTodo
+          label={label}
+          handleChangeTask={this.handleChangeTask}
+          handleAddTask={this.handleAddTask}
+        />
         <Section className={styles.todos__main}>
           <TasksTodo
-            formatDateFn={formatDateFn}
-            handleChangeTask={this.handleChangeTask}
-            handleRemoveTask={this.handleRemoveTask}
             taskList={taskList}
+            formatDateFn={formatDateFn}
+            handleToggleTask={this.handleToggleTask}
+            handleRemoveTask={this.handleRemoveTask}
+            handleChangesTasks={this.handleChangesTasks}
+            handleEditingTask={this.handleEditingTask}
+            handleFinishEditingTask={this.handleFinishEditingTask}
           />
           <FooterTodo />
         </Section>
