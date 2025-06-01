@@ -1,23 +1,31 @@
 import Button from '@atoms/button';
 import List from '@atoms/list';
 import ListItem from '@atoms/list-item';
-import { FilterOption } from '@/types/todos';
+import { FilterOption, FiltersTask, HandleChangeFilter } from '@/types/todos';
 import { FC } from 'react';
 import styles from './index.module.css';
 import { filters } from '@/constants/todos';
+import clsx from 'clsx';
 
 interface TaskFiltersProps {
-  callback: (filter: FilterOption['filter']) => void;
+  handleChangeFilter: HandleChangeFilter;
+  activeFilter: FiltersTask;
 }
 
-const TaskFilters: FC<TaskFiltersProps> = ({ callback }) => {
+const TaskFilters: FC<TaskFiltersProps> = ({
+  handleChangeFilter,
+  activeFilter,
+}) => {
   const mapCallback = (filterOpt: FilterOption) => {
     const { filter, label } = filterOpt;
     return (
       <ListItem key={filter}>
         <Button
-          className={styles['filters__button']}
-          onClick={() => callback(filter)}
+          className={clsx(
+            activeFilter === filter && styles['filters__button--active'],
+            styles['filters__button'],
+          )}
+          onClick={handleChangeFilter(filter)}
         >
           {label}
         </Button>

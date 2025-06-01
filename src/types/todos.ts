@@ -12,10 +12,9 @@ export interface Task {
 
 export type TaskList = Task[];
 
-type FilterTodos = 'all' | 'active' | 'completed';
-
+export type FiltersTask = 'all' | 'active' | 'completed';
 export interface FilterOption {
-  filter: FilterTodos;
+  filter: FiltersTask;
   label: string;
 }
 export type FilterOptions = FilterOption[];
@@ -30,3 +29,7 @@ export type HandleEditingTask = (
 ) => (e: MouseEvent<HTMLButtonElement>) => void;
 export type HandleFinishEditingTask = (id: number) => () => void;
 export type HandleRemoveTask = (id: number) => () => void;
+
+export type HandleChangeFilter = (
+  filter: FiltersTask,
+) => (e: MouseEvent<HTMLButtonElement>) => void;
