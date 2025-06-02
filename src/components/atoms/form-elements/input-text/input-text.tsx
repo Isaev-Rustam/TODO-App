@@ -5,7 +5,7 @@ interface InputProps {
   className?: string;
   label: string;
   handleChange: (label: string) => void;
-  handleKeyDown?: (label: string) => void;
+  handleKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
   handleBlur?: (e: FocusEvent<HTMLInputElement>) => void;
   inputRef?: RefObject<HTMLInputElement>;
 }
@@ -20,8 +20,8 @@ const InputText: FC<InputProps> = ({
   handleBlur,
 }) => {
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === 'Enter' && handleKeyDown) {
-      handleKeyDown(label);
+    if (handleKeyDown) {
+      handleKeyDown(e);
     }
   };
 

@@ -1,11 +1,11 @@
 import Input from '@atoms/form-elements/input-text';
 import styles from './index.module.css';
-import { HandleChangesTasks, HandleFinishEditingTask } from '@/types/todos';
+import { HandleChangesTasks, HandleExitEditMode } from '@/types/todos';
 import { Component, createRef, ReactElement } from 'react';
 
 interface EditTasksProps {
   handleChangesTasks: HandleChangesTasks;
-  handleFinishEditingTask: HandleFinishEditingTask;
+  handleExitEditMode: HandleExitEditMode;
   label: string;
   id: number;
 }
@@ -18,8 +18,7 @@ class EditTasks extends Component<EditTasksProps> {
   }
 
   render(): ReactElement {
-    const { handleChangesTasks, handleFinishEditingTask, label, id } =
-      this.props;
+    const { handleChangesTasks, handleExitEditMode, label, id } = this.props;
 
     return (
       <Input
@@ -27,8 +26,8 @@ class EditTasks extends Component<EditTasksProps> {
         label={label}
         inputRef={this.inputRef}
         handleChange={handleChangesTasks(id)}
-        handleKeyDown={handleFinishEditingTask(id)}
-        handleBlur={handleFinishEditingTask(id)}
+        handleKeyDown={handleExitEditMode(id)}
+        handleBlur={handleExitEditMode(id)}
       />
     );
   }

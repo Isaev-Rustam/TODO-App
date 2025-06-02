@@ -1,4 +1,5 @@
-import { FilterOptions, Task, TaskList } from '@/types/todos';
+import { FilterOptions, TaskList } from '@/types/todos';
+import { addTodoTask } from '@/utils/add-todo-task';
 
 export const filters: FilterOptions = [
   { filter: 'all', label: 'All' },
@@ -6,28 +7,8 @@ export const filters: FilterOptions = [
   { filter: 'completed', label: 'Completed' },
 ];
 
-type initTask = { description: string } & Partial<
-  Omit<Task, 'description' | 'id'>
->;
-
-export const addTodoTask = ({
-  description,
-  isCompleted = false,
-  isEditing = false,
-}: initTask): Task => {
-  const task: Task = {
-    id: Math.random(),
-    description,
-    created: Date.now(),
-    isCompleted,
-    isEditing,
-  };
-
-  return task;
-};
-
 export const defaultTaskList: TaskList = [
-  addTodoTask({ description: 'Buy groceries' }),
+  // addTodoTask({ description: 'Buy groceries' }),
   addTodoTask({ description: 'Fix bug in login form', isCompleted: true }),
-  addTodoTask({ description: 'Call the dentist' }),
+  // addTodoTask({ description: 'Call the dentist' }),
 ];

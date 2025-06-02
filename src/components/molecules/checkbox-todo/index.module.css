@@ -1,13 +1,36 @@
-.todos__checkbox {
+.todos__checkbox--icon {
   position: absolute;
-  left: 5px;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: 26px;
+  height: 26px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.todos__checkbox svg {
+
+.todos__checkbox--icon svg {
   width: 100%;
   height: 100%;
+}
+
+.todos__checkbox--icon svg path {
+  fill: rgb(93, 194, 175);
+}
+
+.todos__checkbox:focus + .todos__checkbox--icon svg path,
+.todos__checkbox:hover + .todos__checkbox--icon svg path,
+.todos__checkbox:active + .todos__checkbox--icon svg path {
+  animation: pulse 0.5s linear forwards;
+}
+
+@keyframes pulse {
+  0% {
+    fill: rgb(93, 194, 175);
+  }
+  100% {
+    fill: rgba(175, 47, 47, 0.8);
+  }
 }

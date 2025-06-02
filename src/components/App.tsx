@@ -5,10 +5,11 @@ import { Section } from '@atoms/containers';
 import HeaderTodo from '@molecules/header-todo';
 import TasksTodo from '@organisms/tasks-todo';
 import FooterTodo from '@organisms/footer-todo';
-import { addTodoTask, defaultTaskList } from '@/constants/todos';
+import { defaultTaskList } from '@/constants/todos';
 import { formatDateFn } from '@/utils/formatDate';
 import { updateTaskList } from '@/utils/update-task-list';
-// import { filteredTask } from '@/utils/filtered-task';
+import { filteredTask } from '@/utils/filtered-task';
+import { addTodoTask } from '@/utils/add-todo-task';
 import {
   HandleToggleTask,
   HandleRemoveTask,
@@ -17,11 +18,11 @@ import {
   HandleAddTask,
   HandleChangesTasks,
   HandleEditingTask,
-  HandleFinishEditingTask,
+  HandleExitEditMode,
   FiltersTask,
   HandleChangeFilter,
+  HandleClearCompletedTask,
 } from '@/types/todos';
-import { filteredTask } from '@/utils/filtered-task';
 
 interface TodoAppState {
   taskList: TaskList;
@@ -46,11 +47,13 @@ export class TodoApp extends Component<object, TodoAppState> {
     this.setState({ label });
   };
 
-  handleAddTask: HandleAddTask = label => {
-    this.setState(({ taskList }) => ({
-      taskList: [addTodoTask({ description: label }), ...taskList],
-      label: '',
-    }));
+  handleAddTask: HandleAddTask = ({ code, currentTarget: { value } }) => {
+    if (code === 'Enter') {
+      this.setState(({ taskList }) => ({
+        taskList: [addTodoTask({ description: value.trim() }), ...taskList],
+        label: '',
+      }));
+    }
   };
 
   handleChangesTasks: HandleChangesTasks = id => label => {
@@ -65,7 +68,12 @@ export class TodoApp extends Component<object, TodoAppState> {
     }));
   };
 
-  handleFinishEditingTask: HandleFinishEditingTask = id => () => {
+  handleExitEditMode: HandleExitEditMode = id => e => {
+    if ('code' in e) {
+      if (e.code !== 'Enter' && e.code !== 'Escape') {
+        return;
+      }
+    }
     this.setState(({ taskList }) => ({
       taskList: updateTaskList(taskList, { id, isEditing: false }),
     }));
@@ -77,13 +85,27 @@ export class TodoApp extends Component<object, TodoAppState> {
     }));
   };
 
+  handleClearCompletedTask: HandleClearCompletedTask = () => {
+    this.setState(({ taskList }) => ({
+      taskList: taskList.filter(task => !task.isCompleted),
+    }));
+  };
+
   handleChangeFilter: HandleChangeFilter = filter => () => {
+    if (this.state.filter === filter) {
+      return;
+    }
     this.setState({ filter });
   };
+
+  get unfinishedTasksCounter() {
+    return this.state.taskList.filter(task => !task.isCompleted).length;
+  }
 
   render(): ReactElement {
     const { taskList, filter, label } = this.state;
     const filteredTasks = filteredTask(taskList, filter);
+    const unfinishedTasksCounter = this.unfinishedTasksCounter;
 
     return (
       <Section className={styles.todos}>
@@ -100,11 +122,13 @@ export class TodoApp extends Component<object, TodoAppState> {
             handleRemoveTask={this.handleRemoveTask}
             handleChangesTasks={this.handleChangesTasks}
             handleEditingTask={this.handleEditingTask}
-            handleFinishEditingTask={this.handleFinishEditingTask}
+            handleExitEditMode={this.handleExitEditMode}
           />
           <FooterTodo
             activeFilter={filter}
+            unfinishedTasksCounter={unfinishedTasksCounter}
             handleChangeFilter={this.handleChangeFilter}
+            handleClearCompletedTask={this.handleClearCompletedTask}
           />
         </Section>
       </Section>

@@ -18,7 +18,8 @@ const CheckboxTodo: FC<CheckboxTodoProps> = props => {
     <Checkbox
       handleToggleTask={handleToggleTask}
       isCompleted={isCompleted}
-      spanClass={styles['todos__checkbox']}
+      inputClass={styles['todos__checkbox']}
+      spanClass={styles['todos__checkbox--icon']}
       id={id}
     >
       {isCompleted ? <CheckboxActive /> : <CheckboxDisable />}

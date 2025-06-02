@@ -1,8 +1,3 @@
-.todos__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 .todos__list:last-child {
   border-bottom: none;
 }
@@ -15,7 +10,4 @@
 .todos__list-item--editing {
   border-bottom: none;
   padding: 0;
-}
-.todos__list-item--editing:last-child {
-  margin-bottom: -1px;
 }

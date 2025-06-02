@@ -11,10 +11,11 @@
   border-radius: 3px;
 }
 .filters__button--active {
-  border-color: rgba(175, 47, 47, 0.2);
+  color: rgba(175, 47, 47);
 }
 .filters__button:focus,
 .filters__button:hover,
 .filters__button:active {
+  color: inherit;
   border-color: rgba(175, 47, 47, 0.2);
 }
