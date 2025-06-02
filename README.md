@@ -41,7 +41,7 @@ TODO App — это веб-приложение для управления за
     - `handleAddTask`: Добавляет новую задачу при нажатии Enter.
     - `handleChangesTasks`: Обновляет описание задачи при редактировании.
     - `handleEditingTask`: Переводит задачу в режим редактирования.
-    - `handleExitEditMode`: Выходит из режима редактирования при нажатии Enter или Escape.
+    - `handleExitEditMode`: Редактирование завершается при нажатии Enter или Escape, либо при потере фокуса (onBlur).
     - `handleRemoveTask`: Удаляет задачу.
     - `handleClearCompletedTask`: Удаляет все выполненные задачи.
     - `handleChangeFilter`: Изменяет текущий фильтр.
