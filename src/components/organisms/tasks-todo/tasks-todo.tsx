@@ -10,7 +10,7 @@ import {
   HandleToggleTask,
   HandleChangesTasks,
   HandleEditingTask,
-  HandleFinishEditingTask,
+  HandleExitEditMode,
 } from '@/types/todos';
 import clsx from 'clsx';
 import { FormatDateFn } from '@/utils/formatDate';
@@ -23,7 +23,7 @@ interface TasksTodoProps {
   handleChangesTasks: HandleChangesTasks;
   handleRemoveTask: HandleRemoveTask;
   handleEditingTask: HandleEditingTask;
-  handleFinishEditingTask: HandleFinishEditingTask;
+  handleExitEditMode: HandleExitEditMode;
 }
 class TasksTodo extends PureComponent<TasksTodoProps> {
   render() {
@@ -34,7 +34,7 @@ class TasksTodo extends PureComponent<TasksTodoProps> {
       handleRemoveTask,
       handleChangesTasks,
       handleEditingTask,
-      handleFinishEditingTask,
+      handleExitEditMode,
     } = this.props;
 
     const callback = (task: Task) => {
@@ -50,7 +50,7 @@ class TasksTodo extends PureComponent<TasksTodoProps> {
           {isEditing ? (
             <EditTasks
               handleChangesTasks={handleChangesTasks}
-              handleFinishEditingTask={handleFinishEditingTask}
+              handleExitEditMode={handleExitEditMode}
               label={description}
               id={id}
             />

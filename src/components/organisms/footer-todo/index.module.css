@@ -29,9 +29,23 @@
 .todos__footer-num-elem {
   text-align: left;
 }
-.todos__footer-clear-btn:active {
+
+.todos__footer-clear-btn {
   position: relative;
   line-height: 20px;
   text-decoration: none;
   cursor: pointer;
+  transition: color 0.3s ease-in;
+}
+.todos__footer-clear-btn:hover,
+.todos__footer-clear-btn:focus {
+  color: rgba(175, 47, 47);
+}
+.smile-icon {
+  width: 22px;
+  height: 22px;
+}
+.smile-icon path {
+  width: 22px;
+  height: 22px;
 }

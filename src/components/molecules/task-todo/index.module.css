@@ -35,8 +35,10 @@
   cursor: pointer;
 }
 
-.todos__btn-icon:hover {
-  color: #af5b5e;
+.todos__btn-icon:hover,
+.todos__btn-icon:focus,
+.todos__btn-icon:active {
+  color: #a31313;
 }
 
 .todos__btn-icon-edit {
