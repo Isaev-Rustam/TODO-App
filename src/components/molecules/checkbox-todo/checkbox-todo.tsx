@@ -1,9 +1,10 @@
-import styles from './index.module.css';
 import Checkbox from '@atoms/form-elements/checkbox';
-import { HandleToggleTask } from '@/types/todos';
 import { FC } from 'react';
 import CheckboxActive from '@public/assets/svg/checkbox-active.svg';
 import CheckboxDisable from '@public/assets/svg/checkbox-disable.svg';
+
+import { HandleToggleTask } from '@/types/todos';
+import styles from './index.module.css';
 
 interface CheckboxTodoProps {
   handleToggleTask: HandleToggleTask;
@@ -18,7 +19,7 @@ const CheckboxTodo: FC<CheckboxTodoProps> = props => {
     <Checkbox
       handleToggleTask={handleToggleTask}
       isCompleted={isCompleted}
-      inputClass={styles['todos__checkbox']}
+      inputClass={styles.todos__checkbox}
       spanClass={styles['todos__checkbox--icon']}
       id={id}
     >

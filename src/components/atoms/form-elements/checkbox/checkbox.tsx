@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import { FC, ReactNode } from 'react';
-import styles from './index.module.css';
 import Span from '@atoms/span';
+
+import styles from './index.module.css';
 
 interface CheckboxProps {
   isCompleted: boolean;

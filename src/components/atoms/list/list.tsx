@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
 interface ListProps {
   children: ReactNode;
   className?: string;
 }
 
-const List: React.FC<ListProps> = ({ children, className }) => {
-  return <ul className={className}>{children}</ul>;
-};
+const List: FC<ListProps> = ({ children, className }) => (
+  <ul className={className}>{children}</ul>
+);
 
 export default List;

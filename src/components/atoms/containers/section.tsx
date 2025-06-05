@@ -5,8 +5,8 @@ interface SectionProps {
   className?: string;
 }
 
-const Section: FC<SectionProps> = ({ children, className }) => {
-  return <section className={className}>{children}</section>;
-};
+const Section: FC<SectionProps> = ({ children, className }) => (
+  <section className={className}>{children}</section>
+);
 
 export default Section;

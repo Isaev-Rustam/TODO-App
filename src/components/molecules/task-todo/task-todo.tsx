@@ -2,9 +2,10 @@ import Button from '@atoms/button';
 import Label from '@atoms/label';
 import { Div } from '@atoms/containers';
 import Span from '@atoms/span';
-import styles from './index.module.css';
 import { PureComponent } from 'react';
 import clsx from 'clsx';
+import CheckboxTodo from '@molecules/checkbox-todo';
+
 import {
   HandleToggleTask,
   HandleRemoveTask,
@@ -12,7 +13,7 @@ import {
   HandleEditingTask,
 } from '@/types/todos';
 import { FormatDateFn } from '@/utils/formatDate';
-import CheckboxTodo from '@molecules/checkbox-todo';
+import styles from './index.module.css';
 
 interface TaskTodoProps {
   task: Omit<Task, 'isEditing'>;
@@ -42,15 +43,13 @@ class TaskTodo extends PureComponent<TaskTodoProps> {
           />
           <Span
             className={clsx(
-              styles['todos__description'],
+              styles.todos__description,
               isCompleted && styles['todos__description--completed'],
             )}
           >
             {description}
           </Span>
-          <Span className={styles['todos__created']}>
-            {formatDateFn(created)}
-          </Span>
+          <Span className={styles.todos__created}>{formatDateFn(created)}</Span>
         </Label>
         <Button
           onClick={handleEditingTask(id)}

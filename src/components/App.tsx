@@ -1,10 +1,9 @@
-import './index.module.css';
 import { Component, ReactElement } from 'react';
-import styles from './index.module.css';
 import { Section } from '@atoms/containers';
 import HeaderTodo from '@molecules/header-todo';
 import TasksTodo from '@organisms/tasks-todo';
 import FooterTodo from '@organisms/footer-todo';
+
 import { defaultTaskList } from '@/constants/todos';
 import { formatDateFn } from '@/utils/formatDate';
 import { updateTaskList } from '@/utils/update-task-list';
@@ -23,13 +22,13 @@ import {
   HandleChangeFilter,
   HandleClearCompletedTask,
 } from '@/types/todos';
+import styles from './index.module.css';
 
 interface TodoAppState {
   taskList: TaskList;
   label: string;
   filter: FiltersTask;
 }
-
 export class TodoApp extends Component<object, TodoAppState> {
   state: TodoAppState = {
     taskList: structuredClone(defaultTaskList),
@@ -92,20 +91,23 @@ export class TodoApp extends Component<object, TodoAppState> {
   };
 
   handleChangeFilter: HandleChangeFilter = filter => () => {
-    if (this.state.filter === filter) {
+    const { filter: currentFilter } = this.state;
+
+    if (currentFilter === filter) {
       return;
     }
     this.setState({ filter });
   };
 
   get unfinishedTasksCounter() {
-    return this.state.taskList.filter(task => !task.isCompleted).length;
+    const { taskList: currentTaskList } = this.state;
+    return currentTaskList.filter(task => !task.isCompleted).length;
   }
 
   render(): ReactElement {
     const { taskList, filter, label } = this.state;
     const filteredTasks = filteredTask(taskList, filter);
-    const unfinishedTasksCounter = this.unfinishedTasksCounter;
+    const { unfinishedTasksCounter } = this;
 
     return (
       <Section className={styles.todos}>

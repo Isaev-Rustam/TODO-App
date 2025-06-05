@@ -2,14 +2,15 @@ import Button from '@atoms/button';
 import { Footer } from '@atoms/containers';
 import Span from '@atoms/span';
 import TaskFilters from '@molecules/task-filters';
-import styles from './index.module.css';
 import { PureComponent } from 'react';
 import SmileIcon from '@public/assets/svg/smile-circle.svg';
+
 import {
   FiltersTask,
   HandleChangeFilter,
   HandleClearCompletedTask,
 } from '@/types/todos';
+import styles from './index.module.css';
 
 interface FooterTodoProps {
   handleChangeFilter: HandleChangeFilter;
@@ -28,7 +29,7 @@ class FooterTodo extends PureComponent<FooterTodoProps> {
     } = this.props;
 
     return (
-      <Footer className={styles['todos__footer']}>
+      <Footer className={styles.todos__footer}>
         <Span className={styles['todos__footer-num-elem']}>
           {unfinishedTasksCounter === 0 ? (
             <SmileIcon className={styles['smile-icon']} />

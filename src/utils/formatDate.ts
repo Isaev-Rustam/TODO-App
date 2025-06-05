@@ -1,5 +1,6 @@
-import { FormatDate } from '@/types/todos';
 import { formatDistanceToNow } from 'date-fns';
+
+import { FormatDate } from '@/types/todos';
 
 export type FormatDateFn = (date: FormatDate) => string;
 

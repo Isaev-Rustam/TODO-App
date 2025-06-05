@@ -5,8 +5,8 @@ interface HeaderProps {
   className?: string;
 }
 
-const Footer: FC<HeaderProps> = ({ children, className }) => {
-  return <header className={className}>{children}</header>;
-};
+const Footer: FC<HeaderProps> = ({ children, className }) => (
+  <header className={className}>{children}</header>
+);
 
 export default Footer;

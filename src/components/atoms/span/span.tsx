@@ -5,8 +5,8 @@ interface SpanProps {
   className?: string;
 }
 
-const Span: FC<SpanProps> = ({ children, className }) => {
-  return <span className={className}>{children}</span>;
-};
+const Span: FC<SpanProps> = ({ children, className }) => (
+  <span className={className}>{children}</span>
+);
 
 export default Span;

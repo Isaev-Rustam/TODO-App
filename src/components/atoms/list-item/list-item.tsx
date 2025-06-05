@@ -6,8 +6,8 @@ interface ListItemProps {
   className?: string;
 }
 
-const ListItem: FC<ListItemProps> = ({ children, className }) => {
-  return <li className={clsx(className)}>{children}</li>;
-};
+const ListItem: FC<ListItemProps> = ({ children, className }) => (
+  <li className={clsx(className)}>{children}</li>
+);
 
 export default ListItem;

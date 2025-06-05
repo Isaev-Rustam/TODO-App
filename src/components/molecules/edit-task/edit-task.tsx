@@ -1,7 +1,8 @@
 import Input from '@atoms/form-elements/input-text';
-import styles from './index.module.css';
-import { HandleChangesTasks, HandleExitEditMode } from '@/types/todos';
 import { Component, createRef, ReactElement } from 'react';
+
+import { HandleChangesTasks, HandleExitEditMode } from '@/types/todos';
+import styles from './index.module.css';
 
 interface EditTasksProps {
   handleChangesTasks: HandleChangesTasks;

@@ -1,11 +1,12 @@
 import Button from '@atoms/button';
 import List from '@atoms/list';
 import ListItem from '@atoms/list-item';
-import { FilterOption, FiltersTask, HandleChangeFilter } from '@/types/todos';
 import { FC } from 'react';
-import styles from './index.module.css';
-import { filters } from '@/constants/todos';
 import clsx from 'clsx';
+
+import { FilterOption, FiltersTask, HandleChangeFilter } from '@/types/todos';
+import { filters } from '@/constants/todos';
+import styles from './index.module.css';
 
 interface TaskFiltersProps {
   handleChangeFilter: HandleChangeFilter;
@@ -23,7 +24,7 @@ const TaskFilters: FC<TaskFiltersProps> = ({
         <Button
           className={clsx(
             activeFilter === filter && styles['filters__button--active'],
-            styles['filters__button'],
+            styles.filters__button,
           )}
           onClick={handleChangeFilter(filter)}
         >
@@ -33,7 +34,7 @@ const TaskFilters: FC<TaskFiltersProps> = ({
     );
   };
   return (
-    <List className={styles['todos__filters']}>{filters.map(mapCallback)}</List>
+    <List className={styles.todos__filters}>{filters.map(mapCallback)}</List>
   );
 };
 

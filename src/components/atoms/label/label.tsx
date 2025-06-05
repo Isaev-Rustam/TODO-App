@@ -7,12 +7,10 @@ interface LabelProps {
   className?: string;
 }
 
-const Label: FC<LabelProps> = ({ children, id, className }) => {
-  return (
-    <label htmlFor={id} className={clsx(className)}>
-      {children}
-    </label>
-  );
-};
+const Label: FC<LabelProps> = ({ children, id, className }) => (
+  <label htmlFor={id} className={clsx(className)}>
+    {children}
+  </label>
+);
 
 export default Label;

@@ -1,9 +1,10 @@
 import { Header } from '@atoms/containers';
-import styles from './index.module.css';
 import Title from '@atoms/title';
 import { createRef, PureComponent } from 'react';
 import InputText from '@atoms/form-elements/input-text';
+
 import { HandleAddTask, HandleChangeTask } from '@/types/todos';
+import styles from './index.module.css';
 
 interface HeaderTodoState {
   handleChangeTask: HandleChangeTask;
