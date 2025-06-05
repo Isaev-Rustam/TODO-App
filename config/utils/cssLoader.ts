@@ -1,8 +1,9 @@
-import { BuildOptions } from 'config/types/types';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { RuleSetRule } from 'webpack';
 
-export function buildCssLoader({ isDev }: BuildOptions): RuleSetRule {
+import { BuildOptions } from 'config/types/types';
+
+function buildCssLoader({ isDev }: BuildOptions): RuleSetRule {
   const cssLoaderWithModules = {
     loader: 'css-loader',
     options: {
@@ -32,3 +33,5 @@ export function buildCssLoader({ isDev }: BuildOptions): RuleSetRule {
 
   return cssLoader;
 }
+
+export default buildCssLoader;

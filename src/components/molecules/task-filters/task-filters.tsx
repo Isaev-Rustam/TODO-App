@@ -1,11 +1,12 @@
-import Button from '@atoms/button';
-import List from '@atoms/list';
-import ListItem from '@atoms/list-item';
 import { FC } from 'react';
 import clsx from 'clsx';
 
+import Button from '@atoms/button';
+import List from '@atoms/list';
+import ListItem from '@atoms/list-item';
 import { FilterOption, FiltersTask, HandleChangeFilter } from '@/types/todos';
 import { filters } from '@/constants/todos';
+
 import styles from './index.module.css';
 
 interface TaskFiltersProps {

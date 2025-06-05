@@ -1,5 +1,5 @@
 import { FilterOptions, TaskList } from '@/types/todos';
-import { addTodoTask } from '@/utils/add-todo-task';
+import addTodoTask from '@/utils/add-todo-task';
 
 export const filters: FilterOptions = [
   { filter: 'all', label: 'All' },

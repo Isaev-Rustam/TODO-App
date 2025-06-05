@@ -4,7 +4,7 @@ type InitTask = { description: string } & Partial<
   Omit<Task, 'description' | 'id'>
 >;
 
-export const addTodoTask = ({
+const addTodoTask = ({
   description,
   isCompleted = false,
   isEditing = false,
@@ -19,3 +19,4 @@ export const addTodoTask = ({
 
   return task;
 };
+export default addTodoTask;

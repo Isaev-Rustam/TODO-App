@@ -2,7 +2,7 @@ import path from 'path';
 
 import webpack from 'webpack';
 
-import { buildWebpack } from './config/buildWebpack';
+import buildWebpack from './config/buildWebpack';
 import { BuildMode, BuildPaths } from './config/types/types';
 
 interface EnvVariables {

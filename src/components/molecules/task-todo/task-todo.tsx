@@ -1,11 +1,11 @@
+import { PureComponent } from 'react';
+import clsx from 'clsx';
+
 import Button from '@atoms/button';
 import Label from '@atoms/label';
 import { Div } from '@atoms/containers';
 import Span from '@atoms/span';
-import { PureComponent } from 'react';
-import clsx from 'clsx';
 import CheckboxTodo from '@molecules/checkbox-todo';
-
 import {
   HandleToggleTask,
   HandleRemoveTask,
@@ -13,6 +13,7 @@ import {
   HandleEditingTask,
 } from '@/types/todos';
 import { FormatDateFn } from '@/utils/formatDate';
+
 import styles from './index.module.css';
 
 interface TaskTodoProps {

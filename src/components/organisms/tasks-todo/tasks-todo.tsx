@@ -1,10 +1,10 @@
+import { PureComponent } from 'react';
+import clsx from 'clsx';
+
 import ListItem from '@atoms/list-item';
 import List from '@atoms/list';
 import TaskTodo from '@molecules/task-todo';
-import { PureComponent } from 'react';
-import clsx from 'clsx';
 import EditTasks from '@molecules/edit-task';
-
 import {
   TaskList,
   Task,
@@ -15,6 +15,7 @@ import {
   HandleExitEditMode,
 } from '@/types/todos';
 import { FormatDateFn } from '@/utils/formatDate';
+
 import styles from './index.module.css';
 
 interface TasksTodoProps {

@@ -1,14 +1,14 @@
 import { Component, ReactElement } from 'react';
+
 import { Section } from '@atoms/containers';
 import HeaderTodo from '@molecules/header-todo';
 import TasksTodo from '@organisms/tasks-todo';
 import FooterTodo from '@organisms/footer-todo';
-
 import { defaultTaskList } from '@/constants/todos';
 import { formatDateFn } from '@/utils/formatDate';
-import { updateTaskList } from '@/utils/update-task-list';
-import { filteredTask } from '@/utils/filtered-task';
-import { addTodoTask } from '@/utils/add-todo-task';
+import updateTaskList from '@/utils/update-task-list';
+import filteredTask from '@/utils/filtered-task';
+import addTodoTask from '@/utils/add-todo-task';
 import {
   HandleToggleTask,
   HandleRemoveTask,
@@ -22,6 +22,7 @@ import {
   HandleChangeFilter,
   HandleClearCompletedTask,
 } from '@/types/todos';
+
 import styles from './index.module.css';
 
 interface TodoAppState {
@@ -29,7 +30,7 @@ interface TodoAppState {
   label: string;
   filter: FiltersTask;
 }
-export class TodoApp extends Component<object, TodoAppState> {
+class TodoApp extends Component<object, TodoAppState> {
   state: TodoAppState = {
     taskList: structuredClone(defaultTaskList),
     filter: 'all',
@@ -137,3 +138,5 @@ export class TodoApp extends Component<object, TodoAppState> {
     );
   }
 }
+
+export default TodoApp;

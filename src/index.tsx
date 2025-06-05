@@ -1,7 +1,7 @@
 import '../config/utils/reset.module.css';
 import { createRoot } from 'react-dom/client';
 
-import { TodoApp } from './components/App';
+import TodoApp from './components/App';
 
 const root = document.getElementById('root');
 

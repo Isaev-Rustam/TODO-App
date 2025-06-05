@@ -1,6 +1,6 @@
 import { FiltersTask, Task } from '@/types/todos';
 
-export function filteredTask(taskList: Task[], filter: FiltersTask): Task[] {
+function filteredTask(taskList: Task[], filter: FiltersTask): Task[] {
   if (filter === 'all') {
     return [...taskList];
   }
@@ -13,3 +13,4 @@ export function filteredTask(taskList: Task[], filter: FiltersTask): Task[] {
   };
   return taskList.filter(task => filters[filter](task) ?? true);
 }
+export default filteredTask;

@@ -1,9 +1,10 @@
-import { ModuleOptions } from 'webpack';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
-import { BuildOptions } from './types/types';
-import { buildCssLoader } from './utils/cssLoader';
+import { ModuleOptions } from 'webpack';
 
-export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
+import { BuildOptions } from './types/types';
+import buildCssLoader from './utils/cssLoader';
+
+function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
   const { isDev } = options;
 
   const assetLoader = {
@@ -37,3 +38,5 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 
   return [assetLoader, cssLoader, svgrLoader, tsLoader];
 }
+
+export default buildLoaders;

@@ -1,9 +1,10 @@
-import Checkbox from '@atoms/form-elements/checkbox';
 import { FC } from 'react';
+
+import Checkbox from '@atoms/form-elements/checkbox';
 import CheckboxActive from '@public/assets/svg/checkbox-active.svg';
 import CheckboxDisable from '@public/assets/svg/checkbox-disable.svg';
-
 import { HandleToggleTask } from '@/types/todos';
+
 import styles from './index.module.css';
 
 interface CheckboxTodoProps {
