@@ -16,7 +16,7 @@ class EditTasks extends Component<EditTasksProps> {
   inputRef = createRef<HTMLInputElement>();
 
   componentDidMount(): void {
-    this.inputRef.current.focus();
+    this.inputRef.current?.focus();
   }
 
   render(): ReactElement {

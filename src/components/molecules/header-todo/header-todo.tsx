@@ -17,7 +17,7 @@ class HeaderTodo extends PureComponent<HeaderTodoState> {
   inputRef = createRef<HTMLInputElement>();
 
   componentDidMount(): void {
-    this.inputRef.current.focus();
+    this.inputRef.current?.focus();
   }
 
   render() {
