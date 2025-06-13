@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface TitleProps {
   h: 1 | 2 | 3 | 4 | 5 | 6;
@@ -6,7 +6,7 @@ interface TitleProps {
   className?: string;
 }
 
-const Title: FC<TitleProps> = ({ h, children, className }) => {
+const Title = ({ h, children, className }: TitleProps) => {
   const Tag = `h${h}` as keyof JSX.IntrinsicElements;
   return <Tag className={className}>{children}</Tag>;
 };

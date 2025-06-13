@@ -1,11 +1,11 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface ListProps {
   children: ReactNode;
   className?: string;
 }
 
-const List: FC<ListProps> = ({ children, className }) => (
+const List = ({ children, className }: ListProps) => (
   <ul className={className}>{children}</ul>
 );
 

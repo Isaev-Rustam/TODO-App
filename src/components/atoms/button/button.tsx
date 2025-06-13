@@ -1,4 +1,4 @@
-import { FC, ReactNode, MouseEvent } from 'react';
+import { ReactNode, MouseEvent } from 'react';
 
 interface ButtonProps {
   children?: ReactNode;
@@ -6,7 +6,7 @@ interface ButtonProps {
   className?: string;
 }
 
-const Button: FC<ButtonProps> = ({ children, onClick, className }) => (
+const Button = ({ children, onClick, className }: ButtonProps) => (
   <button onClick={onClick} className={className} type='button'>
     {children}
   </button>

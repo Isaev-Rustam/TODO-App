@@ -1,11 +1,11 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface DivProps {
   children: ReactNode;
   className?: string;
 }
 
-const Div: FC<DivProps> = ({ children, className }) => (
+const Div = ({ children, className }: DivProps) => (
   <div className={className}>{children}</div>
 );
 

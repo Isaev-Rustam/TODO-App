@@ -1,11 +1,11 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface SectionProps {
   children: ReactNode;
   className?: string;
 }
 
-const Section: FC<SectionProps> = ({ children, className }) => (
+const Section = ({ children, className }: SectionProps) => (
   <section className={className}>{children}</section>
 );
 

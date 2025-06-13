@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import Checkbox from '@atoms/form-elements/checkbox';
 import CheckboxActive from '@public/assets/svg/checkbox-active.svg';
 import CheckboxDisable from '@public/assets/svg/checkbox-disable.svg';
@@ -13,7 +11,7 @@ interface CheckboxTodoProps {
   id: number;
 }
 
-const CheckboxTodo: FC<CheckboxTodoProps> = props => {
+const CheckboxTodo = (props: CheckboxTodoProps) => {
   const { handleToggleTask, id, isCompleted } = props;
 
   return (

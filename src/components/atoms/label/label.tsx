@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import clsx from 'clsx';
 
 interface LabelProps {
@@ -7,7 +7,7 @@ interface LabelProps {
   className?: string;
 }
 
-const Label: FC<LabelProps> = ({ children, id, className }) => (
+const Label = ({ children, id, className }: LabelProps) => (
   <label htmlFor={id} className={clsx(className)}>
     {children}
   </label>

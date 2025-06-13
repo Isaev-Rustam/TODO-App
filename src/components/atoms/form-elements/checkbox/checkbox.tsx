@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import Span from '@atoms/span';
 
@@ -14,7 +14,7 @@ interface CheckboxProps {
   handleToggleTask: (isCompleted: boolean, id: number) => void;
 }
 
-const Checkbox: FC<CheckboxProps> = props => {
+const Checkbox = (props: CheckboxProps) => {
   const { handleToggleTask, inputClass, isCompleted, children, spanClass, id } =
     props;
   const handleToggle = () => {

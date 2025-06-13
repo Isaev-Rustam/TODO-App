@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import clsx from 'clsx';
 
 import Button from '@atoms/button';
@@ -14,10 +13,10 @@ interface TaskFiltersProps {
   activeFilter: FiltersTask;
 }
 
-const TaskFilters: FC<TaskFiltersProps> = ({
+const TaskFilters = ({
   handleChangeFilter,
   activeFilter,
-}) => {
+}: TaskFiltersProps) => {
   const mapCallback = (filterOpt: FilterOption) => {
     const { filter, label } = filterOpt;
     return (

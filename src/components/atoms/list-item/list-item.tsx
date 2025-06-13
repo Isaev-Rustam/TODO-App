@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import clsx from 'clsx';
 
 interface ListItemProps {
@@ -6,7 +6,7 @@ interface ListItemProps {
   className?: string;
 }
 
-const ListItem: FC<ListItemProps> = ({ children, className }) => (
+const ListItem = ({ children, className }: ListItemProps) => (
   <li className={clsx(className)}>{children}</li>
 );
 

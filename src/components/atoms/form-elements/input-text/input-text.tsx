@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, KeyboardEvent, RefObject, FocusEvent } from 'react';
+import { ChangeEvent, KeyboardEvent, RefObject, FocusEvent } from 'react';
 
 interface InputProps {
   placeholder?: string;
@@ -10,7 +10,7 @@ interface InputProps {
   inputRef?: RefObject<HTMLInputElement>;
 }
 
-const InputText: FC<InputProps> = ({
+const InputText = ({
   handleChange,
   handleKeyDown,
   label,
@@ -18,7 +18,7 @@ const InputText: FC<InputProps> = ({
   className,
   placeholder,
   handleBlur,
-}) => {
+}: InputProps) => {
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (handleKeyDown) {
       handleKeyDown(e);

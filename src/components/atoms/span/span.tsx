@@ -1,11 +1,11 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface SpanProps {
   children?: ReactNode;
   className?: string;
 }
 
-const Span: FC<SpanProps> = ({ children, className }) => (
+const Span = ({ children, className }: SpanProps) => (
   <span className={className}>{children}</span>
 );
 
